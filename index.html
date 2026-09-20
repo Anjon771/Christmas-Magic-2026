@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!--=============== FAVICON ===============-->
-    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="./assets/img/favicon.png" type="image/x-icon">
 
     <!--=============== REMIXICONS ===============-->
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet">
 
     <!--=============== CSS ===============-->
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="./assets/css/styles.css">
 
     <title>Merry Christmas - Festive Holiday Experience</title>
     <meta name="description" content="An enchanting, fully responsive Christmas website featuring interactive snowfall, parallax night landscape, holiday countdown, personalized greeting card studio, and festive celebrations.">
@@ -26,7 +26,7 @@
     <header class="header" id="header">
         <nav class="nav container">
             <a href="#home" class="nav__logo" id="nav-logo">
-                <img src="assets/img/logo.png" alt="Christmas tree icon" class="nav__logo-img">
+                <img src="./assets/img/logo.png" alt="Christmas tree icon" class="nav__logo-img">
                 Christmas <span>Magic</span>
                 <span class="nav__logo-tag">2026</span>
             </a>
@@ -55,8 +55,8 @@
                     <i class="ri-close-line"></i>
                 </div>
 
-                <img src="assets/img/snow-img.png" alt="" class="nav__img-1">
-                <img src="assets/img/snow-img.png" alt="" class="nav__img-2">
+                <img src="./assets/img/snow-img.png" alt="" class="nav__img-1">
+                <img src="./assets/img/snow-img.png" alt="" class="nav__img-2">
             </div>
 
             <!-- Quick Action Controls -->
@@ -67,8 +67,8 @@
                 </button>
 
                 <!-- Snow Intensity Toggle -->
-                <button class="control-btn" id="snow-toggle" title="Change Snow Flurry Mode" aria-label="Toggle Snow Fall Mode">
-                    <i class="ri-snowflake-line"></i>
+                <button class="control-btn" id="snow-toggle" title="Snowfall Flurry: Normal (Click to toggle)" aria-label="Toggle Snow Fall Mode">
+                    <i class="ri-snowflake-line" id="snow-icon"></i>
                 </button>
 
                 <!-- Mobile Toggle button -->
@@ -146,14 +146,14 @@
             </div>
 
             <!-- Parallax Scenic Layers -->
-            <img src="assets/img/home-moon.png" alt="Glowing full moon" class="home__moon parallax" data-rellax-speed="-6">
-            <img src="assets/img/home-trineo-santa.png" alt="Santa and flying reindeer sleigh" class="home__trineo parallax" data-rellax-speed="-4">
-            <img src="assets/img/home-mountain-3.png" alt="Distant winter mountains" class="home__mountain-3 parallax" data-rellax-speed="-2">
-            <img src="assets/img/home-mountain-2.png" alt="Snow covered mountains" class="home__mountain-2 parallax" data-rellax-speed="-1">
-            <img src="assets/img/home-pine-tree.png" alt="Pine forest" class="home__pine parallax" data-rellax-speed="1">
-            <img src="assets/img/home-village.png" alt="Cozy lighted winter village" class="home__village parallax" data-rellax-speed="2">
-            <img src="assets/img/home-mountain-1.png" alt="Foreground snowy slope" class="home__mountain-1">
-            <img src="assets/img/home-snow.png" alt="Snow ground cover" class="home__snow">
+            <img src="./assets/img/home-moon.png" alt="Glowing full moon" class="home__moon parallax" data-rellax-speed="-6">
+            <img src="./assets/img/home-trineo-santa.png" alt="Santa and flying reindeer sleigh" class="home__trineo parallax" data-rellax-speed="-4">
+            <img src="./assets/img/home-mountain-3.png" alt="Distant winter mountains" class="home__mountain-3 parallax" data-rellax-speed="-2">
+            <img src="./assets/img/home-mountain-2.png" alt="Snow covered mountains" class="home__mountain-2 parallax" data-rellax-speed="-1">
+            <img src="./assets/img/home-pine-tree.png" alt="Pine forest" class="home__pine parallax" data-rellax-speed="1">
+            <img src="./assets/img/home-village.png" alt="Cozy lighted winter village" class="home__village parallax" data-rellax-speed="2">
+            <img src="./assets/img/home-mountain-1.png" alt="Foreground snowy slope" class="home__mountain-1">
+            <img src="./assets/img/home-snow.png" alt="Snow ground cover" class="home__snow">
         </section>
 
         <!--==================== ABOUT ====================-->
@@ -206,12 +206,12 @@
                 </div>
 
                 <div class="about__img-wrapper">
-                    <img src="assets/img/about-christmas.png" alt="Santa Claus with holiday gifts" class="about__img">
+                    <img src="./assets/img/about-christmas.png" alt="Santa Claus with holiday gifts" class="about__img">
                 </div>
             </div>
 
-            <img src="assets/img/snow-img.png" alt="" class="about__snow-1 snow-float-1">
-            <img src="assets/img/snow-img.png" alt="" class="about__snow-2 snow-float-2">
+            <img src="./assets/img/snow-img.png" alt="" class="about__snow-1 snow-float-1">
+            <img src="./assets/img/snow-img.png" alt="" class="about__snow-2 snow-float-2">
         </section>
 
         <!--==================== SEND CARDS ====================-->
@@ -232,7 +232,7 @@
                 <!-- 3 Pillars Cards -->
                 <div class="send__container grid">
                     <div class="send__card glass-card" id="card-family">
-                        <img src="assets/img/send-gifts.png" alt="Christmas gifts" class="send__img">
+                        <img src="./assets/img/send-gifts.png" alt="Christmas gifts" class="send__img">
                         <h3 class="send__title">Spend It With Family</h3>
                         <p class="send__description">
                             Cherishing moments together with family is the best gift and warmer than any winter fire.
@@ -240,7 +240,7 @@
                     </div>
 
                     <div class="send__card glass-card" id="card-love">
-                        <img src="assets/img/send-santa.png" alt="Santa giving gifts" class="send__img">
+                        <img src="./assets/img/send-santa.png" alt="Santa giving gifts" class="send__img">
                         <h3 class="send__title">Give Lots Of Love</h3>
                         <p class="send__description">
                             Send generous warmth and compassionate care to those who need comfort during this cold season.
@@ -248,7 +248,7 @@
                     </div>
 
                     <div class="send__card glass-card" id="card-wishes">
-                        <img src="assets/img/send-night.png" alt="Winter night village" class="send__img">
+                        <img src="./assets/img/send-night.png" alt="Winter night village" class="send__img">
                         <h3 class="send__title">Share Good Wishes</h3>
                         <p class="send__description">
                             Spread optimistic words and blessings of health, hope, and laughter into every household.
@@ -341,8 +341,8 @@
                 </div>
             </div>
 
-            <img src="assets/img/snow-img.png" alt="" class="send__snow-1 snow-float-1">
-            <img src="assets/img/snow-img.png" alt="" class="send__snow-2 snow-float-2">
+            <img src="./assets/img/snow-img.png" alt="" class="send__snow-1 snow-float-1">
+            <img src="./assets/img/snow-img.png" alt="" class="send__snow-2 snow-float-2">
         </section>
 
         <!--==================== WISH WALL ====================-->
@@ -474,12 +474,12 @@
                 </div>
 
                 <div class="celebrate__img-wrapper">
-                    <img src="assets/img/celebarte-church.png" alt="Christmas church with glowing windows" class="celebrate__img">
+                    <img src="./assets/img/celebarte-church.png" alt="Christmas church with glowing windows" class="celebrate__img">
                 </div>
             </div>
 
-            <img src="assets/img/snow-img.png" alt="" class="celebrate__snow-1 snow-float-1">
-            <img src="assets/img/snow-img.png" alt="" class="celebrate__snow-2 snow-float-2">
+            <img src="./assets/img/snow-img.png" alt="" class="celebrate__snow-1 snow-float-1">
+            <img src="./assets/img/snow-img.png" alt="" class="celebrate__snow-2 snow-float-2">
         </section>
     </main>
 
@@ -487,7 +487,7 @@
     <footer class="footer">
         <div class="footer__container container">
             <a href="#home" class="footer__logo">
-                <img src="assets/img/logo.png" alt="" class="footer__logo-img">
+                <img src="./assets/img/logo.png" alt="" class="footer__logo-img">
                 Christmas <span>Magic</span>
             </a>
 
@@ -522,8 +522,8 @@
                 &#169; 2026 Responsive Christmas Experience. Created with Anjon. 
             </span>
 
-            <img src="assets/img/snow-img.png" alt="" class="footer__snow-1 snow-float-1">
-            <img src="assets/img/snow-img.png" alt="" class="footer__snow-2 snow-float-2">
+            <img src="./assets/img/snow-img.png" alt="" class="footer__snow-1 snow-float-1">
+            <img src="./assets/img/snow-img.png" alt="" class="footer__snow-2 snow-float-2">
         </div>
     </footer>
 
@@ -539,15 +539,15 @@
     </div>
 
     <!--=============== RELLAX JS ===============-->
-    <script src="assets/js/rellax.min.js"></script>
+    <script src="./assets/js/rellax.min.js"></script>
 
     <!--=============== GSAP ===============-->
-    <script src="assets/js/gsap.min.js"></script>
+    <script src="./assets/js/gsap.min.js"></script>
 
     <!--=============== SCROLLREVEAL ===============-->
-    <script src="assets/js/scrollreveal.min.js"></script>
+    <script src="./assets/js/scrollreveal.min.js"></script>
 
     <!--=============== MAIN JS ===============-->
-    <script src="assets/js/main.js"></script>
+    <script src="./assets/js/main.js"></script>
 </body>
 </html>

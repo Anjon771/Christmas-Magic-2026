@@ -323,6 +323,25 @@ if (canvas) {
 
 // Snow intensity toggle button in header
 const snowToggleBtn = document.getElementById('snow-toggle')
+const snowIconEl = document.getElementById('snow-icon')
+
+function updateSnowButtonVisuals() {
+    if (!snowToggleBtn) return
+    snowToggleBtn.classList.remove('snow-blizzard', 'snow-gentle', 'snow-off')
+    if (snowMode === 'blizzard') {
+        snowToggleBtn.classList.add('snow-blizzard')
+        snowToggleBtn.title = 'Snowfall: Blizzard Mode ❄️ (Click to change)'
+    } else if (snowMode === 'gentle') {
+        snowToggleBtn.classList.add('snow-gentle')
+        snowToggleBtn.title = 'Snowfall: Gentle Flurry ✨ (Click to change)'
+    } else if (snowMode === 'off') {
+        snowToggleBtn.classList.add('snow-off')
+        snowToggleBtn.title = 'Snowfall: Paused 🌙 (Click to change)'
+    } else {
+        snowToggleBtn.title = 'Snowfall: Normal ❄️ (Click to change)'
+    }
+}
+
 if (snowToggleBtn) {
     snowToggleBtn.addEventListener('click', () => {
         playChime()
@@ -339,8 +358,10 @@ if (snowToggleBtn) {
             snowMode = 'normal'
             showToast('❄️ Normal Holiday Snowfall')
         }
+        updateSnowButtonVisuals()
         initSnowflakes()
     })
+    updateSnowButtonVisuals()
 }
 
 /*==================== LIVE CHRISTMAS COUNTDOWN ====================*/
@@ -654,3 +675,45 @@ try {
 } catch (e) {
     console.warn('ScrollReveal init notice:', e)
 }
+
+/*==================== GITHUB PAGES / RESILIENT IMAGE FALLBACKS ====================*/
+/* If image assets are missing on GitHub deployment, automatically provide elegant SVG illustrations */
+const festiveSvgFallbacks = {
+    'logo.png': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><linearGradient id="treeGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2dd4bf"/><stop offset="100%" stop-color="#0f766e"/></linearGradient></defs><polygon points="50,15 62,35 55,35 68,55 60,55 75,78 25,78 40,55 32,55 45,35 38,35" fill="url(#treeGrad)"/><polygon points="50,8 53,16 61,16 55,21 57,29 50,24 43,29 45,21 39,16 47,16" fill="#fbbf24"/><rect x="46" y="78" width="8" height="12" fill="#92400e" rx="2"/><circle cx="50" cy="40" r="3" fill="#ef4444"/><circle cx="42" cy="62" r="3" fill="#fbbf24"/><circle cx="58" cy="65" r="3" fill="#38bdf8"/></svg>`,
+    'favicon.png': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><polygon points="16,4 25,24 7,24" fill="#10b981"/><circle cx="16" cy="4" r="2.5" fill="#f59e0b"/></svg>`,
+    'home-moon.png': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><defs><radialGradient id="moonGlow" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#fff8db"/><stop offset="50%" stop-color="#fef08a"/><stop offset="85%" stop-color="#fde047" stop-opacity="0.9"/><stop offset="100%" stop-color="#ca8a04" stop-opacity="0.2"/></radialGradient><filter id="blurHalo"><feGaussianBlur stdDeviation="15"/></filter></defs><circle cx="200" cy="200" r="140" fill="#fef08a" opacity="0.3" filter="url(#blurHalo)"/><circle cx="200" cy="200" r="110" fill="url(#moonGlow)"/><ellipse cx="170" cy="180" rx="20" ry="14" fill="#facc15" opacity="0.4"/><ellipse cx="230" cy="220" rx="28" ry="18" fill="#facc15" opacity="0.35"/><ellipse cx="190" cy="240" rx="16" ry="12" fill="#facc15" opacity="0.3"/></svg>`,
+    'home-trineo-santa.png': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 240"><defs><linearGradient id="santaGrad" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#ef4444"/><stop offset="100%" stop-color="#b91c1c"/></linearGradient></defs><g fill="#fde047" opacity="0.9"><circle cx="480" cy="70" r="14"/><path d="M470,70 Q495,65 510,85 Q495,100 460,95 Z"/><circle cx="360" cy="90" r="14"/><path d="M350,90 Q375,85 390,105 Q375,120 340,115 Z"/></g><path d="M120,165 Q160,195 240,165 Q270,150 250,130 Q220,120 180,135 Z" fill="url(#santaGrad)" stroke="#fbbf24" stroke-width="3"/><circle cx="190" cy="115" r="16" fill="#ef4444"/><circle cx="190" cy="110" r="8" fill="#fecaca"/><path d="M180,118 Q190,132 200,118 Z" fill="#ffffff"/><circle cx="160" cy="125" r="18" fill="#15803d"/><path d="M250,140 Q350,110 470,80" stroke="#fde047" stroke-width="2" stroke-dasharray="4,4" fill="none"/></svg>`,
+    'home-mountain-3.png': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300" preserveAspectRatio="none"><polygon points="0,300 0,160 180,70 340,190 520,50 690,180 850,80 1000,170 1000,300" fill="#081426" opacity="0.85"/></svg>`,
+    'home-mountain-2.png': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 320" preserveAspectRatio="none"><polygon points="0,320 0,180 120,120 280,240 450,90 620,230 780,110 1000,210 1000,320" fill="#0c1e38"/><polygon points="450,90 410,130 490,130" fill="#e2e8f0" opacity="0.6"/><polygon points="780,110 740,145 820,145" fill="#e2e8f0" opacity="0.6"/></svg>`,
+    'home-pine-tree.png': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 260" preserveAspectRatio="none"><g fill="#071927"><polygon points="100,260 130,120 160,260"/><polygon points="110,260 130,90 150,260"/><polygon points="250,260 285,100 320,260"/><polygon points="400,260 430,130 460,260"/><polygon points="530,260 565,80 600,260"/><polygon points="545,260 565,60 585,260"/><polygon points="700,260 730,110 760,260"/></g></svg>`,
+    'home-village.png': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 360" preserveAspectRatio="none"><g fill="#071424"><rect x="120" y="200" width="100" height="90" rx="3"/><polygon points="105,200 170,130 235,200" fill="#0e233d"/><rect x="320" y="170" width="130" height="120" rx="3"/><polygon points="300,170 385,90 470,170" fill="#0e233d"/><rect x="580" y="190" width="110" height="100" rx="3"/><polygon points="565,190 635,120 705,190" fill="#0e233d"/></g><g fill="#fde047" opacity="0.85"><rect x="150" y="230" width="24" height="24" rx="2"/><rect x="350" y="210" width="28" height="28" rx="2"/><rect x="400" y="210" width="28" height="28" rx="2"/><rect x="620" y="225" width="25" height="25" rx="2"/></g></svg>`,
+    'home-mountain-1.png': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 240" preserveAspectRatio="none"><path d="M0,240 L0,120 Q300,40 600,110 T1200,80 L1200,240 Z" fill="#060f1e"/></svg>`,
+    'home-snow.png': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 140" preserveAspectRatio="none"><path d="M0,140 L0,50 Q200,10 450,45 T950,25 Q1100,40 1200,20 L1200,140 Z" fill="#0d1b2e"/></svg>`,
+    'about-christmas.png': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 400"><defs><linearGradient id="aboutGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ef4444"/><stop offset="100%" stop-color="#991b1b"/></linearGradient></defs><rect width="500" height="400" rx="24" fill="#091629"/><circle cx="250" cy="150" r="70" fill="url(#aboutGrad)"/><circle cx="250" cy="140" r="35" fill="#fed7aa"/><path d="M220,150 Q250,205 280,150 Z" fill="#ffffff"/><circle cx="250" cy="130" r="10" fill="#f87171"/><rect x="170" y="230" width="160" height="110" rx="16" fill="url(#aboutGrad)"/><rect x="235" y="230" width="30" height="110" fill="#fbbf24"/><rect x="170" y="270" width="160" height="30" fill="#fbbf24"/><polygon points="250,205 230,230 270,230" fill="#fbbf24"/><text x="250" y="375" text-anchor="middle" fill="#fde047" font-family="'Outfit', sans-serif" font-size="20" font-weight="600">Heartfelt Christmas Warmth</text></svg>`,
+    'send-gifts.png': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 220"><rect width="300" height="220" rx="16" fill="#091628"/><rect x="80" y="80" width="140" height="100" rx="10" fill="#dc2626"/><rect x="135" y="80" width="30" height="100" fill="#f59e0b"/><rect x="80" y="115" width="140" height="30" fill="#f59e0b"/><ellipse cx="130" cy="65" rx="20" ry="14" fill="#fbbf24"/><ellipse cx="170" cy="65" rx="20" ry="14" fill="#fbbf24"/><circle cx="150" cy="72" r="9" fill="#d97706"/></svg>`,
+    'send-santa.png': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 220"><rect width="300" height="220" rx="16" fill="#091628"/><circle cx="150" cy="80" r="45" fill="#ef4444"/><circle cx="150" cy="80" r="28" fill="#fde68a"/><path d="M125,90 Q150,135 175,90 Z" fill="#ffffff"/><circle cx="150" cy="82" r="7" fill="#ef4444"/><rect x="100" y="130" width="100" height="70" rx="12" fill="#ef4444"/><rect x="100" y="150" width="100" height="16" fill="#18181b"/><rect x="140" y="145" width="20" height="26" fill="#f59e0b" rx="3"/></svg>`,
+    'send-night.png': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 220"><rect width="300" height="220" rx="16" fill="#081324"/><circle cx="230" cy="60" r="22" fill="#fef08a" opacity="0.9"/><polygon points="60,170 120,80 180,170" fill="#0d233a"/><rect x="95" y="125" width="50" height="45" fill="#0a1726"/><rect x="110" y="135" width="18" height="18" fill="#fbbf24" rx="2"/><circle cx="70" cy="40" r="2" fill="#ffffff"/><circle cx="140" cy="30" r="2" fill="#ffffff"/><circle cx="190" cy="45" r="2" fill="#ffffff"/></svg>`,
+    'celebarte-church.png': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 400"><rect width="500" height="400" rx="24" fill="#091629"/><polygon points="250,50 180,180 320,180" fill="#0e233d"/><rect x="200" y="180" width="100" height="160" fill="#0b1a2e" rx="4"/><polygon points="120,220 200,160 200,340 120,340" fill="#081424"/><polygon points="380,220 300,160 300,340 380,340" fill="#081424"/><polygon points="250,30 254,42 266,42 256,50 260,62 250,54 240,62 244,50 234,42 246,42" fill="#fbbf24"/><path d="M230,240 Q250,210 270,240 L270,300 L230,300 Z" fill="#fbbf24" opacity="0.9"/><line x1="250" y1="220" x2="250" y2="300" stroke="#78350f" stroke-width="2"/><line x1="230" y1="260" x2="270" y2="260" stroke="#78350f" stroke-width="2"/><text x="250" y="375" text-anchor="middle" fill="#fde047" font-family="'Outfit', sans-serif" font-size="20" font-weight="600">Peaceful Holiday Sanctuary</text></svg>`,
+    'snow-img.png': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80"><g stroke="#93c5fd" stroke-width="3" stroke-linecap="round"><line x1="40" y1="10" x2="40" y2="70"/><line x1="10" y1="40" x2="70" y2="40"/><line x1="18" y1="18" x2="62" y2="62"/><line x1="18" y1="62" x2="62" y2="18"/></g><circle cx="40" cy="40" r="4" fill="#dbeafe"/></svg>`
+}
+
+function handleImageError(img) {
+    const src = img.getAttribute('src') || ''
+    const filename = src.split('/').pop().split('?')[0]
+    
+    if (festiveSvgFallbacks[filename]) {
+        console.warn(`[Christmas Magic] Notice: Image "${filename}" failed to load from "${src}". Deploying festive vector illustration fallback. (Tip: Ensure assets/img/ is pushed to GitHub!)`)
+        const svgContent = encodeURIComponent(festiveSvgFallbacks[filename])
+        img.src = `data:image/svg+xml;utf8,${svgContent}`
+        img.classList.add('loaded-fallback')
+    }
+}
+
+document.querySelectorAll('img').forEach(img => {
+    img.addEventListener('error', () => handleImageError(img))
+    // If already broken before script attaches
+    if (img.complete && img.naturalWidth === 0 && img.getAttribute('src')) {
+        handleImageError(img)
+    }
+})
+
