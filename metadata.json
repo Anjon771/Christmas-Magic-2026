@@ -1,0 +1,6 @@
+{
+  "name": "Responsive Christmas Website",
+  "description": "An enchanting, fully responsive Christmas website featuring interactive snowfall, parallax night landscape, holiday countdown, personalized greeting card studio, and festive celebrations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

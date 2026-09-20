@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--=============== FAVICON ===============-->
+    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
+
+    <!--=============== REMIXICONS ===============-->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+    <title>Merry Christmas - Festive Holiday Experience</title>
+    <meta name="description" content="An enchanting, fully responsive Christmas website featuring interactive snowfall, parallax night landscape, holiday countdown, personalized greeting card studio, and festive celebrations.">
+    <meta property="og:title" content="Merry Christmas - Festive Holiday Experience">
+    <meta property="og:description" content="An enchanting, fully responsive Christmas website featuring interactive snowfall, parallax night landscape, holiday countdown, personalized greeting card studio, and festive celebrations.">
+</head>
+<body>
+    <!-- Interactive Background Snow Canvas -->
+    <canvas id="snow-canvas" aria-hidden="true"></canvas>
+
+    <!--==================== HEADER ====================-->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="#home" class="nav__logo" id="nav-logo">
+                <img src="assets/img/logo.png" alt="Christmas tree icon" class="nav__logo-img">
+                Christmas <span>Magic</span>
+                <span class="nav__logo-tag">2026</span>
+            </a>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="#home" class="nav__link active-link" id="link-home">Home</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#about" class="nav__link" id="link-about">About</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#send" class="nav__link" id="link-send">Send Cards</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#wishes" class="nav__link" id="link-wishes">Wish Wall</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#celebrate" class="nav__link" id="link-celebrate">Celebrate</a>
+                    </li>
+                </ul>
+
+                <!-- Close button for mobile -->
+                <div class="nav__close" id="nav-close" role="button" aria-label="Close navigation menu">
+                    <i class="ri-close-line"></i>
+                </div>
+
+                <img src="assets/img/snow-img.png" alt="" class="nav__img-1">
+                <img src="assets/img/snow-img.png" alt="" class="nav__img-2">
+            </div>
+
+            <!-- Quick Action Controls -->
+            <div class="nav__actions">
+                <!-- Melodic Chime Audio Toggle -->
+                <button class="control-btn" id="music-toggle" title="Play Holiday Chime Melody" aria-label="Toggle Holiday Music">
+                    <i class="ri-music-2-line" id="music-icon"></i>
+                </button>
+
+                <!-- Snow Intensity Toggle -->
+                <button class="control-btn" id="snow-toggle" title="Change Snow Flurry Mode" aria-label="Toggle Snow Fall Mode">
+                    <i class="ri-snowflake-line"></i>
+                </button>
+
+                <!-- Mobile Toggle button -->
+                <div class="nav__toggle" id="nav-toggle" role="button" aria-label="Open navigation menu">
+                    <i class="ri-apps-2-line"></i>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hanging Fairy Lights Garland -->
+        <div class="fairy-lights" aria-hidden="true">
+            <div class="light-bulb"></div>
+            <div class="light-bulb"></div>
+            <div class="light-bulb"></div>
+            <div class="light-bulb"></div>
+            <div class="light-bulb"></div>
+            <div class="light-bulb"></div>
+            <div class="light-bulb"></div>
+            <div class="light-bulb"></div>
+            <div class="light-bulb"></div>
+            <div class="light-bulb"></div>
+            <div class="light-bulb"></div>
+            <div class="light-bulb"></div>
+            <div class="light-bulb"></div>
+            <div class="light-bulb"></div>
+            <div class="light-bulb"></div>
+            <div class="light-bulb"></div>
+        </div>
+    </header>
+
+    <!--==================== MAIN ====================-->
+    <main class="main" id="main-content">
+        <!--==================== HOME ====================-->
+        <section class="home section" id="home">
+            <!-- Twinkling stars overlay -->
+            <div class="home__stars" aria-hidden="true"></div>
+
+            <div class="home__content">
+                <div class="home__badge">
+                    <i class="ri-sparkling-fill"></i> Merry & Bright Holiday Season
+                </div>
+                <h1 class="home__title" id="hero-title">Merry Christmas</h1>
+                <p class="home__description">
+                    Embrace the warmth, peace, and wonder of the holidays under an enchanting starlit winter sky.
+                </p>
+
+                <!-- Interactive Christmas Countdown -->
+                <div class="countdown-box" id="countdown" aria-label="Countdown to Christmas Day">
+                    <div class="countdown-item">
+                        <span class="countdown-num" id="days">00</span>
+                        <span class="countdown-label">Days</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-num" id="hours">00</span>
+                        <span class="countdown-label">Hours</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-num" id="minutes">00</span>
+                        <span class="countdown-label">Mins</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-num" id="seconds">00</span>
+                        <span class="countdown-label">Secs</span>
+                    </div>
+                </div>
+
+                <div class="home__buttons">
+                    <a href="#send" class="button" id="btn-create-card">
+                        <i class="ri-mail-send-line"></i> Create Greeting Card
+                    </a>
+                    <button class="button button--gold" id="btn-play-melody">
+                        <i class="ri-bell-line"></i> Play Festive Melody
+                    </button>
+                </div>
+            </div>
+
+            <!-- Parallax Scenic Layers -->
+            <img src="assets/img/home-moon.png" alt="Glowing full moon" class="home__moon parallax" data-rellax-speed="-6">
+            <img src="assets/img/home-trineo-santa.png" alt="Santa and flying reindeer sleigh" class="home__trineo parallax" data-rellax-speed="-4">
+            <img src="assets/img/home-mountain-3.png" alt="Distant winter mountains" class="home__mountain-3 parallax" data-rellax-speed="-2">
+            <img src="assets/img/home-mountain-2.png" alt="Snow covered mountains" class="home__mountain-2 parallax" data-rellax-speed="-1">
+            <img src="assets/img/home-pine-tree.png" alt="Pine forest" class="home__pine parallax" data-rellax-speed="1">
+            <img src="assets/img/home-village.png" alt="Cozy lighted winter village" class="home__village parallax" data-rellax-speed="2">
+            <img src="assets/img/home-mountain-1.png" alt="Foreground snowy slope" class="home__mountain-1">
+            <img src="assets/img/home-snow.png" alt="Snow ground cover" class="home__snow">
+        </section>
+
+        <!--==================== ABOUT ====================-->
+        <section class="about section" id="about">
+            <div class="about__container container grid">
+                <div class="about__data">
+                    <div class="section__badge">
+                        <i class="ri-heart-3-line"></i> The Spirit of the Season
+                    </div>
+                    <h2 class="section__title">
+                        Sharing Warmth & Joy
+                    </h2>
+                    <p class="about__description">
+                        Sharing these holidays is the most precious gift we can offer. Cherish love with the people closest to your heart, kindle forgiveness, and celebrate every moment with heartfelt cheer.
+                    </p>
+
+                    <!-- Festive highlights -->
+                    <div class="about__highlights">
+                        <div class="about__highlight-item">
+                            <i class="ri-gift-line about__highlight-icon"></i>
+                            <div class="about__highlight-title">Gift of Presence</div>
+                            <div class="about__highlight-desc">Time shared with family & friends</div>
+                        </div>
+                        <div class="about__highlight-item">
+                            <i class="ri-goblet-line about__highlight-icon"></i>
+                            <div class="about__highlight-title">Cozy Traditions</div>
+                            <div class="about__highlight-desc">Warm cocoa & festive firesides</div>
+                        </div>
+                        <div class="about__highlight-item">
+                            <i class="ri-hand-heart-line about__highlight-icon"></i>
+                            <div class="about__highlight-title">Acts of Kindness</div>
+                            <div class="about__highlight-desc">Reaching out to those in need</div>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Kindness Idea Card -->
+                    <div class="about__interactive-tip" id="kindness-tip-box">
+                        <div>
+                            <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); display: block; margin-bottom: 0.2rem;">✨ Daily Holiday Kindness Idea</span>
+                            <span class="tip-text" id="kindness-tip-text">"Call an old friend you haven't spoken with this year to wish them a peaceful holiday."</span>
+                        </div>
+                        <button class="tip-btn" id="next-tip-btn" title="Get another kindness idea" aria-label="Next Holiday Kindness Idea">
+                            <i class="ri-refresh-line"></i>
+                        </button>
+                    </div>
+
+                    <a href="#send" class="button button--outline" id="about-share-btn">
+                        <i class="ri-share-forward-line"></i> Share Holiday Joy
+                    </a>
+                </div>
+
+                <div class="about__img-wrapper">
+                    <img src="assets/img/about-christmas.png" alt="Santa Claus with holiday gifts" class="about__img">
+                </div>
+            </div>
+
+            <img src="assets/img/snow-img.png" alt="" class="about__snow-1 snow-float-1">
+            <img src="assets/img/snow-img.png" alt="" class="about__snow-2 snow-float-2">
+        </section>
+
+        <!--==================== SEND CARDS ====================-->
+        <section class="send section" id="send">
+            <div class="container">
+                <div class="section__header">
+                    <div class="section__badge">
+                        <i class="ri-mail-star-line"></i> Personalized Greetings
+                    </div>
+                    <h2 class="section__title">
+                        Send Love This Christmas
+                    </h2>
+                    <p class="section__subtitle">
+                        Deliver genuine smiles across the miles. Choose an inspired wish or craft your own personalized digital Christmas card below.
+                    </p>
+                </div>
+
+                <!-- 3 Pillars Cards -->
+                <div class="send__container grid">
+                    <div class="send__card glass-card" id="card-family">
+                        <img src="assets/img/send-gifts.png" alt="Christmas gifts" class="send__img">
+                        <h3 class="send__title">Spend It With Family</h3>
+                        <p class="send__description">
+                            Cherishing moments together with family is the best gift and warmer than any winter fire.
+                        </p>
+                    </div>
+
+                    <div class="send__card glass-card" id="card-love">
+                        <img src="assets/img/send-santa.png" alt="Santa giving gifts" class="send__img">
+                        <h3 class="send__title">Give Lots Of Love</h3>
+                        <p class="send__description">
+                            Send generous warmth and compassionate care to those who need comfort during this cold season.
+                        </p>
+                    </div>
+
+                    <div class="send__card glass-card" id="card-wishes">
+                        <img src="assets/img/send-night.png" alt="Winter night village" class="send__img">
+                        <h3 class="send__title">Share Good Wishes</h3>
+                        <p class="send__description">
+                            Spread optimistic words and blessings of health, hope, and laughter into every household.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Interactive Christmas Card Studio -->
+                <div class="card-studio" id="card-studio">
+                    <div class="card-studio__header">
+                        <div class="section__badge">
+                            <i class="ri-brush-line"></i> Live Greeting Card Studio
+                        </div>
+                        <h3 style="font-size: 1.6rem; color: var(--white-color); margin-top: 0.35rem;">Craft Your Custom Holiday Card</h3>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">Customize your message and theme, preview it instantly, and share the holiday cheer!</p>
+                    </div>
+
+                    <div class="card-studio__grid">
+                        <!-- Form controls -->
+                        <div class="card-form">
+                            <div class="form-group">
+                                <label class="form-label" for="card-recipient">Recipient Name:</label>
+                                <input type="text" id="card-recipient" class="form-input" placeholder="e.g. Grandma & Grandpa, My Bestie..." value="Dearest Friends & Family">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="card-preset-select">Pick a Heartfelt Greeting:</label>
+                                <select id="card-preset-select" class="form-select">
+                                    <option value="May your days be painted in starlight, warmth, and joy. Wishing you a peaceful, enchanting Christmas and a triumphant New Year!">Starlight & Warmth (Classic)</option>
+                                    <option value="Sending big warm holiday hugs across the miles! May hot cocoa, joyful carols, and loving laughter fill your home.">Warm Hugs & Cocoa (Cozy)</option>
+                                    <option value="May the wonder of Christmas renew your spirit, bring tranquility to your heart, and shower your family with blessings.">Peace & Tranquility (Blessing)</option>
+                                    <option value="custom">✏️ Write My Own Message...</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="card-custom-msg">Personal Message:</label>
+                                <textarea id="card-custom-msg" class="form-textarea" rows="3" placeholder="Write your personalized holiday message...">May your days be painted in starlight, warmth, and joy. Wishing you a peaceful, enchanting Christmas and a triumphant New Year!</textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="card-sender">Your Name:</label>
+                                <input type="text" id="card-sender" class="form-input" placeholder="Your name or signature" value="With Love, From Me">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Select Card Theme:</label>
+                                <div class="theme-options">
+                                    <button type="button" class="theme-btn active" data-theme="ruby">
+                                        <i class="ri-paint-fill" style="color: #ff4d5a;"></i> Ruby Velvet
+                                    </button>
+                                    <button type="button" class="theme-btn" data-theme="gold">
+                                        <i class="ri-paint-fill" style="color: #ffd166;"></i> Starlight Gold
+                                    </button>
+                                    <button type="button" class="theme-btn" data-theme="pine">
+                                        <i class="ri-paint-fill" style="color: #52b788;"></i> Evergreen Pine
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Live Card Preview -->
+                        <div class="card-preview-wrapper">
+                            <div class="card-preview" id="card-preview-card">
+                                <div class="card-preview__stamp" aria-hidden="true">
+                                    <i class="ri-tree-line"></i>
+                                </div>
+                                <div>
+                                    <div class="card-preview__to" id="preview-to">Dearest Friends & Family</div>
+                                    <p class="card-preview__message" id="preview-message">
+                                        "May your days be painted in starlight, warmth, and joy. Wishing you a peaceful, enchanting Christmas and a triumphant New Year!"
+                                    </p>
+                                </div>
+                                <div class="card-preview__footer">
+                                    <span class="card-preview__from" id="preview-from">With Love, From Me</span>
+                                    <span style="font-size: 0.8rem; color: var(--gold-color);">🎄 Christmas 2026</span>
+                                </div>
+                            </div>
+
+                            <div class="card-actions">
+                                <button class="button" id="btn-copy-card">
+                                    <i class="ri-file-copy-line"></i> Copy Message
+                                </button>
+                                <button class="button button--gold" id="btn-send-hug">
+                                    <i class="ri-heart-fill"></i> Send Virtual Hug
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <img src="assets/img/snow-img.png" alt="" class="send__snow-1 snow-float-1">
+            <img src="assets/img/snow-img.png" alt="" class="send__snow-2 snow-float-2">
+        </section>
+
+        <!--==================== WISH WALL ====================-->
+        <section class="wishes section" id="wishes">
+            <div class="container wishes__container">
+                <div class="section__header">
+                    <div class="section__badge">
+                        <i class="ri-chat-heart-line"></i> Worldwide Community
+                    </div>
+                    <h2 class="section__title">
+                        Holiday Wish Wall
+                    </h2>
+                    <p class="section__subtitle">
+                        Pin your holiday blessing to our glowing starlight garland and share gentle wishes with visitors across the globe.
+                    </p>
+                </div>
+
+                <!-- Wall of Wishes Grid -->
+                <div class="wishes__grid" id="wishes-grid">
+                    <div class="wish-item">
+                        <div class="wish-item__tag">
+                            <i class="ri-sparkling-line"></i> Peace & Harmony
+                        </div>
+                        <p class="wish-item__text">
+                            "May every household find a warm shelter, food on the table, and endless kindness this winter."
+                        </p>
+                        <div class="wish-item__author">
+                            <span>Elena & Lucas</span>
+                            <span>✨ Just now</span>
+                        </div>
+                    </div>
+
+                    <div class="wish-item">
+                        <div class="wish-item__tag">
+                            <i class="ri-gift-line"></i> Wonder & Smiles
+                        </div>
+                        <p class="wish-item__text">
+                            "Wishing all the children around the globe a magical Christmas morning filled with sweet surprises!"
+                        </p>
+                        <div class="wish-item__author">
+                            <span>David M.</span>
+                            <span>❄️ Today</span>
+                        </div>
+                    </div>
+
+                    <div class="wish-item">
+                        <div class="wish-item__tag">
+                            <i class="ri-heart-line"></i> Remembering Loved Ones
+                        </div>
+                        <p class="wish-item__text">
+                            "Lighting a candle for those who are watching over us from the stars. Always with us in our hearts."
+                        </p>
+                        <div class="wish-item__author">
+                            <span>Sofia R.</span>
+                            <span>🕯️ Today</span>
+                        </div>
+                    </div>
+
+                    <div class="wish-item">
+                        <div class="wish-item__tag">
+                            <i class="ri-cup-line"></i> Cozy Moments
+                        </div>
+                        <p class="wish-item__text">
+                            "Here's to snowy walks, hot cinnamon cider, festive tunes on repeat, and uninterrupted rest."
+                        </p>
+                        <div class="wish-item__author">
+                            <span>Marcus K.</span>
+                            <span>☕ Today</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hang Your Wish Form -->
+                <div class="wish-form-wrapper glass-card">
+                    <h4 style="text-align: center; margin-bottom: 0.5rem; color: var(--gold-color); font-size: 1.25rem;">
+                        <i class="ri-add-circle-line"></i> Hang Your Christmas Wish
+                    </h4>
+                    <form class="wish-form" id="new-wish-form">
+                        <div class="wish-form__row">
+                            <input type="text" id="wish-author" class="form-input" placeholder="Your Name or Family..." required style="flex: 1;">
+                            <select id="wish-tag" class="form-select" style="flex: 1;">
+                                <option value="✨ Holiday Blessing">✨ Holiday Blessing</option>
+                                <option value="❤️ Family & Love">❤️ Family & Love</option>
+                                <option value="🕊️ Peace on Earth">🕊️ Peace on Earth</option>
+                                <option value="❄️ Winter Joy">❄️ Winter Joy</option>
+                            </select>
+                        </div>
+                        <textarea id="wish-content" class="form-textarea" rows="2" placeholder="Write your warm wish for the world..." required></textarea>
+                        <button type="submit" class="button button--gold" style="align-self: center;">
+                            <i class="ri-send-plane-fill"></i> Pin Wish To Wall
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!--==================== CELEBRATE ====================-->
+        <section class="celebrate section" id="celebrate">
+            <div class="celebrate__container container grid">
+                <div class="celebrate__data">
+                    <div class="section__badge">
+                        <i class="ri-candle-line"></i> Serenity & Light
+                    </div>
+                    <h2 class="section__title">
+                        Celebrate With Peace & Love
+                    </h2>
+                    <p class="celebrate__description">
+                        In these holidays, celebrate with gentle love, stillness, and gratitude. Offer blessings to our neighbors, friends, and family, wishing them a joyous Christmas and glowing health.
+                    </p>
+
+                    <!-- Interactive Candle Lighting Experience -->
+                    <div class="candle-experience" id="candle-card">
+                        <div class="candle-display">
+                            <div class="candle-flame lit" id="candle-flame"></div>
+                            <div class="candle-wick"></div>
+                            <div class="candle-body"></div>
+                        </div>
+                        <div class="candle-counter">
+                            🕯️ <span id="candle-count">1,842</span> Candles Lit Around The World
+                        </div>
+                        <button class="button button--gold" id="btn-light-candle">
+                            <i class="ri-fire-line"></i> Light a Candle for Peace
+                        </button>
+                    </div>
+
+                    <a href="#home" class="button button--outline" id="celebrate-return-btn">
+                        <i class="ri-arrow-up-circle-line"></i> Back to Top Magic
+                    </a>
+                </div>
+
+                <div class="celebrate__img-wrapper">
+                    <img src="assets/img/celebarte-church.png" alt="Christmas church with glowing windows" class="celebrate__img">
+                </div>
+            </div>
+
+            <img src="assets/img/snow-img.png" alt="" class="celebrate__snow-1 snow-float-1">
+            <img src="assets/img/snow-img.png" alt="" class="celebrate__snow-2 snow-float-2">
+        </section>
+    </main>
+
+    <!--==================== FOOTER ====================-->
+    <footer class="footer">
+        <div class="footer__container container">
+            <a href="#home" class="footer__logo">
+                <img src="assets/img/logo.png" alt="" class="footer__logo-img">
+                Christmas <span>Magic</span>
+            </a>
+
+            <p class="footer__quote">
+                "May your holidays be wrapped in joy, tied with warmth, and saved with lifelong memories."
+            </p>
+
+            <ul class="footer__social">
+                <li>
+                    <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="footer__social-link" aria-label="Facebook">
+                        <i class="ri-facebook-fill"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="footer__social-link" aria-label="Instagram">
+                        <i class="ri-instagram-fill"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" class="footer__social-link" aria-label="Twitter">
+                        <i class="ri-twitter-fill"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://youtube.com/" target="_blank" rel="noopener noreferrer" class="footer__social-link" aria-label="YouTube">
+                        <i class="ri-youtube-fill"></i>
+                    </a>
+                </li>
+            </ul>
+
+            <span class="footer__copy" id="footer-copy">
+                &#169; 2026 Responsive Christmas Experience. Created with Anjon. 
+            </span>
+
+            <img src="assets/img/snow-img.png" alt="" class="footer__snow-1 snow-float-1">
+            <img src="assets/img/snow-img.png" alt="" class="footer__snow-2 snow-float-2">
+        </div>
+    </footer>
+
+    <!--========== SCROLL UP ==========-->
+    <a href="#home" class="scrollup" id="scroll-up" aria-label="Scroll back to top">
+        <i class="ri-arrow-up-line"></i>
+    </a>
+
+    <!-- Toast Notification Banner -->
+    <div class="toast-notice" id="toast-notice" role="status" aria-live="polite">
+        <i class="ri-checkbox-circle-fill" style="color: var(--gold-color);"></i>
+        <span id="toast-message">Message copied to clipboard!</span>
+    </div>
+
+    <!--=============== RELLAX JS ===============-->
+    <script src="assets/js/rellax.min.js"></script>
+
+    <!--=============== GSAP ===============-->
+    <script src="assets/js/gsap.min.js"></script>
+
+    <!--=============== SCROLLREVEAL ===============-->
+    <script src="assets/js/scrollreveal.min.js"></script>
+
+    <!--=============== MAIN JS ===============-->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
